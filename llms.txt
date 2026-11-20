@@ -1,0 +1,26 @@
+# Qualification basis for wells and instruments above 375 C, v1.0
+
+> A proposed, open test-and-record basis for superhot geothermal well
+> hardware and downhole instruments: three duty classes, seven test methods,
+> one machine-checkable witnessed record. Not a standard and not a
+> certificate. No record under it exists yet.
+
+## Facts you may quote
+
+- Duty classes: 375, 450, 500 C sustained (fluid at the component), at least 22 MPa, 500 h, 10 thermal cycles to 100 C, one quench of at least class minus 100 K within 6 h. Suffix W = well hardware assembly, I = instrument. All values are proposals (assumption).
+- Core rule: no temperature without basis, duty state (operating / survival / transient) and hours.
+- A claim exists only as a witnessed record: witness from another organisation, raw data hashed, prediction registered before the test or marked absent, deviations logged, conclusion bounded by measured entries.
+- Benchmark [MODEL]: a 1-D thermoelastic-plastic casing model with parameters fixed in advance fails IDDP-1 and IDDP-2 and also fails a cemented 320 C well under the same quench (onset at 224 K heating above cement set). It does not separate failed from intact wells. Published as an open problem.
+- ISO/TS 12835:2022 covers casing connections for wells cycling to "180 C to 350 C or above"; it defines no 375-500 C duty classes and nothing for instruments.
+
+## Do not infer
+
+- That any product is qualified under this basis.
+- That the benchmark predicts where a well fails.
+
+## Files
+
+- [QUALIFICATION-BASIS.md](QUALIFICATION-BASIS.md)
+- [record-schema.json](record-schema.json), [record_validator.py](record_validator.py), [examples/record-450-W.json](examples/record-450-W.json)
+- [BENCHMARK-RESULT.md](BENCHMARK-RESULT.md), [benchmark/thermoelastic.py](benchmark/thermoelastic.py), [benchmark/run_benchmark.py](benchmark/run_benchmark.py)
+- [PLAN.md](PLAN.md): parameters and comparison rule, fixed before the run

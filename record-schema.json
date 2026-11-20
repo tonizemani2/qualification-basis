@@ -1,0 +1,30 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "Witnessed record: qualification basis for wells and instruments above 375 C, v1.0",
+ "description": "Structure of a record. The rules a schema cannot express (witness independence, prediction before test, claim bound) are in record_validator.py.",
+ "type": "object",
+ "required": ["record_id", "date", "subject", "duty_class", "qualifier", "witness", "prediction", "duty_entries", "calibration", "raw_data", "deviations", "teardown", "conclusion"],
+ "$defs": {"label": {"enum": ["measured", "vendor-stated", "simulated", "assumption", "unknown"]},
+           "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+ "properties": {
+  "record_id": {"type": "string"},
+  "date": {"type": "string", "format": "date"},
+  "test_start_utc": {"type": "string"},
+  "subject": {"type": "object", "required": ["description", "revision"]},
+  "duty_class": {"type": "string", "pattern": "^(375|450|500)-(W|I)(/[0-9]+h)?$"},
+  "fluid_class": {"enum": ["dry", "steam", "brine", "acid gas"]},
+  "qualifier": {"type": "object", "required": ["name", "organisation"]},
+  "witness": {"type": "object", "required": ["name", "organisation", "signed"]},
+  "prediction": {"type": "object", "properties": {"registered": {"type": "boolean"}, "sha256": {"$ref": "#/$defs/sha256"}, "timestamp_utc": {"type": "string"}, "mark": {"const": "no registered prediction"}}},
+  "duty_entries": {"type": "array", "minItems": 1, "items": {"type": "object",
+    "required": ["temperature_c", "basis", "state", "hours", "label"],
+    "properties": {"temperature_c": {"type": "number"}, "basis": {"enum": ["formation", "fluid at the component", "component body"]},
+                   "state": {"enum": ["operating", "survival", "transient"]}, "hours": {"type": "number", "minimum": 0},
+                   "cycles": {"type": "integer", "minimum": 0}, "cooldown_k": {"type": "number"}, "rate_k_per_h": {"type": "number"}, "label": {"$ref": "#/$defs/label"}}}},
+  "calibration": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["instrument", "certificate", "valid_until"]}},
+  "raw_data": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["file", "sha256"], "properties": {"sha256": {"$ref": "#/$defs/sha256"}}}},
+  "deviations": {"type": "array", "items": {"type": "object", "required": ["what", "disposition"]}},
+  "teardown": {"type": "object"},
+  "conclusion": {"type": "object", "required": ["pinned", "duty_state", "label"], "properties": {"label": {"$ref": "#/$defs/label"}}}
+ }
+}

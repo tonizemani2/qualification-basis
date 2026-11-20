@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this basis, please cite it as below."
+title: "Qualification basis for wells and instruments above 375 °C, with an open thermoelastic benchmark"
+version: "1.0.0"
+date-released: "2026-11-20"
+type: software
+authors:
+  - family-names: Zemani
+    given-names: Toni
+abstract: >-
+  Duty classes 375 / 450 / 500 °C for superhot geothermal well hardware and
+  downhole instruments, test methods, a machine-checkable witnessed-record
+  contract, and a one-dimensional thermoelastic-plastic casing benchmark whose
+  comparison with the IDDP-1 and IDDP-2 failures is published as an open
+  problem.
+keywords:
+  - superhot geothermal
+  - qualification
+  - well integrity
+  - thermal cycling
+license:
+  - MIT
+  - CC-BY-4.0
+repository-code: "https://github.com/tonizemani2/qualification-basis"
+url: "https://zemanium.com"
+references:
+  - type: software
+    title: "Forecast and audit record for the first enhanced-geothermal production history"
+    authors:
+      - family-names: Zemani
+        given-names: Toni
+    doi: "10.5281/zenodo.24396505"
+    repository-code: "https://github.com/tonizemani2/forecast-audit"
