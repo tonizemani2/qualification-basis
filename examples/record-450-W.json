@@ -1,0 +1,24 @@
+{
+ "note": "SYNTHETIC EXAMPLE: no physical test was run. It shows the record format only.",
+ "record_id": "EXAMPLE-450-W-0001",
+ "date": "2027-08-15",
+ "test_start_utc": "2027-06-01T08:00:00Z",
+ "subject": {"description": "9 5/8-inch casing, premium connection and cement sheath, 1.5 m assembly, axially restrained", "revision": "example-A", "material_certificates": ["example-cert-1"]},
+ "duty_class": "450-W",
+ "fluid_class": "dry",
+ "qualifier": {"name": "Example Qualifier", "organisation": "Example Laboratory A"},
+ "witness": {"name": "Example Witness", "organisation": "Example Institute B", "present": true, "signed": true},
+ "prediction": {"registered": true, "sha256": "0000000000000000000000000000000000000000000000000000000000000000", "timestamp_utc": "2027-05-20T10:00:00Z",
+                "summary": "axial load after cycle 10 within 15 % of cycle 3; no leak above the stated rate; failure = connection parting or leak"},
+ "duty_entries": [
+  {"temperature_c": 450, "basis": "fluid at the component", "state": "operating", "hours": 500, "cycles": 10, "label": "measured"},
+  {"temperature_c": 100, "basis": "fluid at the component", "state": "operating", "hours": 40, "cycles": 10, "label": "measured"},
+  {"temperature_c": 450, "basis": "component body", "state": "transient", "hours": 5.5, "cooldown_k": 352, "rate_k_per_h": 64, "label": "measured"}
+ ],
+ "calibration": [{"instrument": "type N thermocouples, 6 off", "certificate": "example-cal-17025-001", "valid_until": "2028-01-31"}],
+ "raw_data": [{"file": "temperatures.csv", "sha256": "1111111111111111111111111111111111111111111111111111111111111111"},
+              {"file": "axial-load.csv", "sha256": "2222222222222222222222222222222222222222222222222222222222222222"}],
+ "deviations": [{"what": "furnace controller reset at hour 212, 14 minutes below 440 C", "disposition": "hours extended by 1 h; accepted by witness"}],
+ "teardown": {"performed": true, "attribution": "no failure; connection sectioned, photographs 1-12"},
+ "conclusion": {"pinned": "qualified: (450-W, operating, 500 h, 10 cycles, dry, 0.1 MPa)", "duty_state": "operating", "hours": 500, "cycles": 10, "label": "measured"}
+}
